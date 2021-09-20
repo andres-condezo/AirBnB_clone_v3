@@ -63,7 +63,7 @@ def update_state(state_id):
     """ Updates a State object """
     state = storage.get(State, state_id)
 
-    if state_id is None:
+    if state is None:
         abort(404)
 
     put_data = request.get_json()
