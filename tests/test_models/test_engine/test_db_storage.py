@@ -108,9 +108,10 @@ class TestGetCount(unittest.TestCase):
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get(self):
-        """Test get State"""
-        state_objects = storage.all(State)
+        """Test that get a object a dictionaty"""
         first_state_id = list(storage.all(State).values())[0].id
-        key_class = "State:{}".format(first_state_id)
-        get_test = storage.get(key_class)
-        self.assertEqual(get_test, state_objects[key_class])
+        test_get_data = storage.get(State, first_state_id)
+        all_data = storage.all()
+        key = "State.{}".format(first_state_id)
+        test_value = all_data[key]
+        self.assertEqual(test_get_data, test_value)
