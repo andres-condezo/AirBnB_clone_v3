@@ -77,4 +77,4 @@ def update_state(state_id):
             continue
     state.save()
     storage.save()
-    return make_response(jsonify(state.to_dict()), 201)
+    return make_response(jsonify(state.to_dict()), 200)
