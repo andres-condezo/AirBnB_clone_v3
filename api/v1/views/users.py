@@ -74,7 +74,7 @@ def update_usermenity(user_id):
         abort(400, 'Not a JSON')
 
     for k, v in put_data.items():
-        if k == 'name':
+        if k == ['id', 'email', 'created_at', 'updated_at']:
             setattr(user, k, v)
         else:
             continue
