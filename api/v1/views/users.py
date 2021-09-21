@@ -50,8 +50,10 @@ def create_user():
     req = request.get_json()
     if not req:
         abort(400, 'Not a JSON')
-    elif 'name' not in req:
-        abort(400, 'Missing name')
+    elif email not in req:
+        abort(400, 'Missing email')
+    elif password not in req:
+        abort(400, 'Missing password')
     else:
         inst_user = User(**req)
         storage.new(inst_user)
