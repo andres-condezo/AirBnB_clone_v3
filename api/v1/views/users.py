@@ -25,7 +25,7 @@ def show_users():
                  strict_slashes=False)
 def get_user(user_id):
     """ Retrieves a User object """
-    user = storage.get(User, user_id)
+    user = storage.get('User', user_id)
     if user is None:
         abort(404)
     else:
@@ -36,7 +36,7 @@ def get_user(user_id):
                  strict_slashes=False)
 def delete_user(user_id):
     """ Deletes an User object """
-    user = storage.get("User", user_id)
+    user = storage.get('User', user_id)
     if user is None:
         abort(404)
     storage.delete(user)
@@ -62,7 +62,7 @@ def create_user():
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def update_usermenity(user_id):
     """ Updates an User object """
-    user = storage.get(User, user_id)
+    user = storage.get('User', user_id)
 
     if user is None:
         abort(404)
