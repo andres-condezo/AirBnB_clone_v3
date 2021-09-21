@@ -8,7 +8,6 @@ all default RESTFul API actions.
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request, make_response
 from models import storage
-from models.state import State
 from models.city import City
 from models.place import Place
 from models.user import User
@@ -73,6 +72,7 @@ def create_place(city_id):
     elif user is None:
         abort(404)
     else:
+        req['city_id'] = city_id
         inst_place = Place(**req)
         storage.new(inst_place)
         storage.save()
