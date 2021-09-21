@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-New view for State objects that handles
+New view for Places objects that handles
 all default RESTFul API actions.
 """
 
@@ -67,10 +67,10 @@ def create_place(city_id):
         abort(400, 'Not a JSON')
     elif 'user_id' not in req:
         abort(400, 'Missing user_id')
-    elif 'name' not in req:
-        abort(400, 'Missing name')
     elif user is None:
         abort(404)
+    elif 'name' not in req:
+        abort(400, 'Missing name')
     else:
         req['city_id'] = city_id
         inst_place = Place(**req)
