@@ -93,7 +93,7 @@ def update_place(place_id):
 
     for k, v in put_data.items():
         if k not in ['id', 'user_id', 'city_id', 'created_at',
-                        'updated_at']:
+                     'updated_at']:
             setattr(place, k, v)
     place.save()
     storage.save()
