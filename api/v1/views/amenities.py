@@ -63,7 +63,7 @@ def create_Amenity():
                  strict_slashes=False)
 def update_amenity(amentity_id):
     """ Updates an Amenity object """
-    amenity = storage.get(Amenity, amentity_id)
+    amenity = storage.get('Amenity', amentity_id)
 
     if amenity is None:
         abort(404)
