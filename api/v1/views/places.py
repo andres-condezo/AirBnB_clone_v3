@@ -73,8 +73,6 @@ def create_place(city_id):
     elif user is None:
         abort(404)
     else:
-        """req['city_id'] = city_id
-        req['user_id'] = user_id"""
         inst_place = Place(**req)
         storage.new(inst_place)
         storage.save()
