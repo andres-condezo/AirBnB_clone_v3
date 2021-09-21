@@ -50,15 +50,14 @@ def create_user():
     req = request.get_json()
     if not req:
         abort(400, 'Not a JSON')
-    elif 'email' not in req:
+    if 'email' not in req:
         abort(400, 'Missing email')
-    elif 'password' not in req:
+    if 'password' not in req:
         abort(400, 'Missing password')
-    else:
-        inst_user = User(**req)
-        storage.new(inst_user)
-        storage.save()
-        return make_response(jsonify(inst_user.to_dict()), 201)
+    inst_user = User(**req)
+    storage.new(inst_user)
+    storage.save()
+    return make_response(jsonify(inst_user.to_dict()), 201)
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
