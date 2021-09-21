@@ -55,7 +55,6 @@ def create_user():
     if 'password' not in req:
         abort(400, 'Missing password')
     inst_user = User(**req)
-    storage.new(inst_user)
     storage.save()
     return make_response(jsonify(inst_user.to_dict()), 201)
 
