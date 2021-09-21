@@ -73,7 +73,7 @@ def update_amenity(amentity_id):
         abort(400, 'Not a JSON')
 
     for k, v in put_data.items():
-        if k == ['id', 'created_at', 'updated_at']:
+        if k not in ['id', 'created_at', 'updated_at']:
             setattr(amenity, k, v)
         else:
             continue
