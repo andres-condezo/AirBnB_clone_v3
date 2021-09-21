@@ -15,7 +15,7 @@ from models.user import User
 def show_users():
     """ Retrieves the list of all User objects """
     users_list = []
-    all_users = storage.all(User)
+    all_users = storage.all('User')
     for obj in all_users.values():
         users_list.append(obj.to_dict())
     return jsonify(users_list)
