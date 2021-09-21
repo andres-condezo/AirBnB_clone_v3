@@ -25,7 +25,7 @@ def show_amenities():
                  strict_slashes=False)
 def get_amenitie(amenity_id):
     """ Retrieves a Amenity object """
-    amenity = storage.get(Amenity, amenity_id)
+    amenity = storage.get("Amenity", amenity_id)
     if amenity is None:
         abort(404)
     else:
