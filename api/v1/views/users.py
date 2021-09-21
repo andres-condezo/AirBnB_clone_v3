@@ -36,7 +36,7 @@ def get_user(user_id):
                  strict_slashes=False)
 def delete_user(user_id):
     """ Deletes an User object """
-    user = storage.get('User', user_id)
+    user = storage.get(User, user_id)
     if user is None:
         abort(404)
     storage.delete(user)
