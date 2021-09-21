@@ -92,10 +92,9 @@ def update_place(place_id):
         abort(400, 'Not a JSON')
 
     for k, v in put_data.items():
-        if k == 'name':
+        if k not in ['id', 'user_id', 'city_id', 'created_at',
+                        'updated_at']:
             setattr(place, k, v)
-        else:
-            continue
     place.save()
     storage.save()
     return make_response(jsonify(place.to_dict()), 200)
