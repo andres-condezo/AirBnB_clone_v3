@@ -73,10 +73,9 @@ def update_amenity(amentity_id):
         abort(400, 'Not a JSON')
 
     for k, v in put_data.items():
-        if k == 'name':
+        if k == ['id', 'created_at', 'updated_at']:
             setattr(amenity, k, v)
         else:
             continue
-    amenity.save()
     storage.save()
     return make_response(jsonify(amenity.to_dict()), 200)
