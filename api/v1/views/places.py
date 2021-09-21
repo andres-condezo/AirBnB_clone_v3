@@ -61,15 +61,16 @@ def create_place(city_id):
 
     req = request.get_json()
 
-    user = storage.get(User, req['user_id'])
-
     if not req:
         abort(400, 'Not a JSON')
-    elif 'user_id' not in req:
+    if 'user_id' not in req:
         abort(400, 'Missing user_id')
-    elif user is None:
+
+    user = storage.get(User, req['user_id'])
+
+    if user is None:
         abort(404)
-    elif 'name' not in req:
+    if 'name' not in req:
         abort(400, 'Missing name')
     else:
         req['city_id'] = city_id
