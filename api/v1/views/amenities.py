@@ -15,7 +15,7 @@ from models.amenity import Amenity
 def show_amenities():
     """ Retrieves the list of all Amenity objects """
     amenities_list = []
-    all_amenities = storage.all('Amenity')
+    all_amenities = storage.all(Amenity)
     for obj in all_amenities.values():
         amenities_list.append(obj.to_dict())
     return jsonify(amenities_list)
@@ -25,7 +25,7 @@ def show_amenities():
                  strict_slashes=False)
 def get_amenitie(amenity_id):
     """ Retrieves a Amenity object """
-    amenity = storage.get('Amenity', amenity_id)
+    amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         abort(404)
     else:
@@ -36,7 +36,7 @@ def get_amenitie(amenity_id):
                  strict_slashes=False)
 def delete_amenity(amentity_id):
     """ Deletes an Amenity object """
-    amenity = storage.get('Amenity', amentity_id)
+    amenity = storage.get(Amenity, amentity_id)
     if amenity is None:
         abort(404)
     storage.delete(amenity)
@@ -63,7 +63,7 @@ def create_Amenity():
                  strict_slashes=False)
 def update_amenity(amentity_id):
     """ Updates an Amenity object """
-    amenity = storage.get('Amenity', amentity_id)
+    amenity = storage.get(Amenity, amentity_id)
 
     if amenity is None:
         abort(404)
