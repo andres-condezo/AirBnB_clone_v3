@@ -15,7 +15,7 @@ from models.amenity import Amenity
 def show_amenities():
     """ Retrieves the list of all Amenity objects """
     amenities_list = []
-    all_amenities = storage.all(Amenity)
+    all_amenities = storage.all('Amenity')
     for obj in all_amenities.values():
         amenities_list.append(obj.to_dict())
     return jsonify(amenities_list)
@@ -50,13 +50,12 @@ def create_Amenity():
     req = request.get_json()
     if not req:
         abort(400, 'Not a JSON')
-    elif 'name' not in req:
+    if 'name' not in req:
         abort(400, 'Missing name')
-    else:
-        inst_amenity = Amenity(**req)
-        storage.new(inst_amenity)
-        storage.save()
-        return jsonify(inst_amenity.to_dict()), 201
+    inst_amenity = Amenity(**req)
+    storage.new(inst_amenity)
+    storage.save()
+    return jsonify(inst_amenity.to_dict()), 201
 
 
 @app_views.route('/amenities/<amentity_id>', methods=['PUT'],
@@ -75,7 +74,5 @@ def update_amenity(amentity_id):
     for k, v in put_data.items():
         if k not in ['id', 'created_at', 'updated_at']:
             setattr(amenity, k, v)
-        else:
-            continue
     storage.save()
     return jsonify(amenity.to_dict()), 200
