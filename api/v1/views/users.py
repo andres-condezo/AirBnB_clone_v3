@@ -15,7 +15,7 @@ from models.user import User
 def show_users():
     """ Retrieves the list of all User objects """
     users_list = []
-    all_users = storage.all('User')
+    all_users = storage.all(User)
     for obj in all_users.values():
         users_list.append(obj.to_dict())
     return jsonify(users_list)
@@ -25,7 +25,7 @@ def show_users():
                  strict_slashes=False)
 def get_user(user_id):
     """ Retrieves a User object """
-    user = storage.get('User', user_id)
+    user = storage.get(User, user_id)
     if user is None:
         abort(404)
     else:
@@ -62,7 +62,7 @@ def create_user():
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def update_usermenity(user_id):
     """ Updates an User object """
-    user = storage.get('User', user_id)
+    user = storage.get(User, user_id)
 
     if user is None:
         abort(404)
