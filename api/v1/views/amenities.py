@@ -56,7 +56,7 @@ def create_Amenity():
         inst_amenity = Amenity(**req)
         storage.new(inst_amenity)
         storage.save()
-        return make_response(jsonify(inst_amenity.to_dict()), 201)
+        return jsonify(inst_amenity.to_dict()), 201
 
 
 @app_views.route('/amenities/<amentity_id>', methods=['PUT'],
@@ -78,4 +78,4 @@ def update_amenity(amentity_id):
         else:
             continue
     storage.save()
-    return make_response(jsonify(amenity.to_dict()), 200)
+    return jsonify(amenity.to_dict()), 200
